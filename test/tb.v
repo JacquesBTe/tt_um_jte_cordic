@@ -28,7 +28,7 @@ module tb ();
 `endif
 
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  tt_um_jte_cordic tt_um_jte_cordic (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -45,5 +45,12 @@ module tb ();
       .clk    (clk),      // clock
       .rst_n  (rst_n)     // not reset
   );
+
+  // Convenience aliases for readability in gtkwave / surfer.
+  // These just mirror existing signals into the dump; they don't change behavior.
+  wire [6:0] angle = ui_in[6:0];   // 7-bit input angle
+  wire       start = ui_in[7];     // start
+  wire [7:0] sin   = uo_out;       // sin output (Q2.6, two's complement)
+  wire [7:0] cos   = uio_out;      // cos output (Q2.6, two's complement)
 
 endmodule
