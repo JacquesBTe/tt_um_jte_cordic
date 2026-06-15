@@ -16,7 +16,7 @@ assign direction = z_in[7]; //signed binary so MSB indicates pos or neg
 arctan_lut arctan1(i,arctan_val);
 
 always @(*)begin
-    if (z_in[7] == 0)begin
+    if (direction == 1'b0)begin
         x_out = x_in - (y_in >>> i);
         y_out = y_in + (x_in >>> i);
         z_out = z_in - arctan_val;
