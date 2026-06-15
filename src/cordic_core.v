@@ -8,11 +8,11 @@ module cordic_core (
     input  wire [7:0] z_init,
     output wire [7:0] x_out,
     output wire [7:0] y_out,
-    output reg  [2:0] iter,
     output wire       iter_done
 );
 
 reg [7:0] x,y,z;
+reg [2:0] iter;
 wire signed [7:0] x_next, y_next, z_next;
 
 always @(posedge clk) begin
